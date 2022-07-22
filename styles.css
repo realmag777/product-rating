@@ -1,0 +1,39 @@
+:root{
+    --product-rating-color:#0056b3;
+}
+
+/* https://matthewjamestaylor.com/custom-tags */
+product-rating{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    font-size: 9vw;
+}
+
+product-rating label{
+    position: relative;
+    cursor: pointer;
+    color: var(--product-rating-color);
+}
+
+product-rating label:before{
+    position: absolute;
+    opacity: 0;
+    content: '\2605';/* https://www.compart.com/en/unicode/U+2605 */
+}
+
+product-rating label:hover:before,
+product-rating label:hover ~ label:before{
+    opacity: 1 !important;
+}
+
+product-rating label:has(> input:checked):before,
+product-rating label:has(> input:checked) ~label:before{
+    opacity: 1;
+}
+
+product-rating:hover label:has(> input:checked):before,
+product-rating:hover label:has(> input:checked) ~ label:before{
+    opacity: 0.5;
+}
+
